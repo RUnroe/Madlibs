@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<meta charset ="utf-8">
+
+<title>Mad Libs</title>
+<center><img src="madlib.png"></center>
+
+<div id="inputdiv">
+<p>
+<input id="adj1" type="text" placeholder="Adjective">
+<input id="noun1" type="text" placeholder="Noun">
+<input id="noun2" type="text" placeholder="Plural Noun"></p>
+<p>
+<input id="silly" type="text" placeholder="Silly Word">
+<input id="liquid" type="text" placeholder="Liquid">
+<input id="adj2" type="text" placeholder="Adjective"></p>
+<p>
+<input id="noun3" type="text" placeholder="Noun">
+<input id="verb1" type="text" placeholder="Verb">
+<input id="noun4" type="text" placeholder="Noun"></p>
+<p>
+<input id="verb2" type="text" placeholder="Verb ending with -ING">
+<input id="age" type="text" placeholder="Number">
+<input id="verb3" type="text" placeholder="Verb ending with -ING"></p>
+<p>
+<input id="noun5" type="text" placeholder="Plural Noun">
+<input id="noun6" type="text" placeholder="Noun"></p>
+<button id="finalButton">Click to create MadLib!</button>
+</div>
+
+
+
+<div id="storydiv">
+<p id="story"></p>
+<button id="returnButton">Click to go back</button>
+</div>
+
+
+<style>
+input{
+    margin:5px;
+}
+button{
+    margin:5px 0 0 5px;
+    padding:3px;
+}
+.madLibWord{
+    font-size:30px;
+    color:red;
+    font-weight:bolder;
+}
+p{
+    font-size:25px;
+}
+body{
+    background-color:lightblue;
+}
+
+#inputdiv{
+   display:block; /*none and block*/ 
+   text-align:center;
+}
+#storydiv{
+    display: none;
+}
+</style>
+
+
+<script>
+    var story = document.querySelector("#story");
+    var finalButton = document.querySelector("#finalButton");
+    
+    finalButton.addEventListener("click", enterButtonClick, false);
+    returnButton.addEventListener("click", returnButtonClick, false);
+    
+    var storydiv = document.querySelector("#storydiv");
+    var inputdiv = document.querySelector("#inputdiv");
+    
+    function enterButtonClick() {
+       storydiv.style.display = "block";
+       inputdiv.style.display = "none";
+       finalClick();
+    }
+    
+    function returnButtonClick() {
+        storydiv.style.display = "none";
+        inputdiv.style.display = "block";
+        
+    }
+    
+    
+
+    function finalClick() {
+        var adj1 = document.querySelector("#adj1").value;
+        var noun1 = document.querySelector("#noun1").value;
+        var noun2 = document.querySelector("#noun2").value;
+        var silly = document.querySelector("#silly").value;
+        var liquid = document.querySelector("#liquid").value;
+        var adj2 = document.querySelector("#adj2").value;
+        var noun3 = document.querySelector("#noun3").value;
+        var verb1 = document.querySelector("#verb1").value;
+        var noun4 = document.querySelector("#noun4").value;
+        var verb2 = document.querySelector("#verb2").value;
+        var age = document.querySelector("#age").value;
+        var verb3 = document.querySelector("#verb3").value;
+        var noun5 = document.querySelector("#noun5").value;
+        var noun6 = document.querySelector("#noun6").value; 
+
+        
+        story.innerHTML = "American children are fascinated by " + cool(adj1) + " stuff-like stories that scare the " + cool(noun1) +
+        " off them or make their " + cool(noun2) + " stand on end. Scientists say this is because being frightened causes the " + cool(silly) +
+        " gland to function and puts " + cool(liquid) + " into their blood. And everyone knows that makes a kid feel " + cool(adj2) +
+        ". When they are scared by a movie or a/an " + cool(noun3) + ", boys laugh and holler and " + cool(verb1) + 
+        ". But girls cover their eyes with their " + cool(noun4) + " and keep screaming and " + cool(verb2) + 
+        ". Most kids get over this by the time they are " + cool(age) + " years old. Then they like movies about cars " + cool(verb3) + 
+        " or cops shooting " + cool(noun5) + ", or, if they are girls, they like movies about a boy meeting a/an " + cool(noun6) + 
+        " and they keep falling in love. Of course, that can be scary, too.";
+    }
+    
+    function cool(someWord){
+        return "<span class = madLibWord>" + someWord + "</span>";
+    }
+    
+</script>
